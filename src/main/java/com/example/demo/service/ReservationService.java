@@ -5,6 +5,6 @@ import com.example.demo.model.Reservation;
 import java.util.List;
 
 public interface ReservationService {
-    Reservation save(Reservation reservation);
+    void save(Reservation reservation);
     List<Reservation> getReservations(String userName);
 }

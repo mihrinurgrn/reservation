@@ -21,16 +21,15 @@ public class ReservationServiceImpl implements ReservationService {
     UserRepository userRepository;
 
     @Override
-    public Reservation save(Reservation reservation) {
+    public void save(Reservation reservation) {
         reservationRepository.save(reservation);
-        return reservation;
+
     }
 
     @Override
     public List<Reservation> getReservations(String userName) {
         List<Reservation> reservations=new ArrayList<>();
-        User user=userRepository.findUserByUserName(userName);
-        reservations=reservationRepository.findReservationsByUser_UserId(user.getUserId());
+        reservations=reservationRepository.findAllByUser(userRepository.findByUserName(userName));
         return reservations;
     }
 }

@@ -18,10 +18,12 @@ public class ReservationController {
     UserService userService;
 
     @PostMapping("/reservation/{userName}")
-    Reservation newReservation(@RequestBody Reservation newReservation,@PathVariable String userName) {
+    public void newReservation(@RequestBody Reservation newReservation,@PathVariable String userName) {
         User user=userService.getUser(userName);
         newReservation.setUser(user);
-        return reservationService.save(newReservation);
+        reservationService.save(newReservation);
+
+
     }
 
     @GetMapping("/reservations/{userName}")
